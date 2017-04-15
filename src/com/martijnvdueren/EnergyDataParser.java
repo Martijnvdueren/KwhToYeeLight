@@ -60,7 +60,20 @@ public class EnergyDataParser {
 
     public void parseEnergyData(String serialEnergyData){
 
-        if(serialEnergyData.contains("1-0:1.8.1")){
+        String energyLines[] = serialEnergyData.split(";");
+
+        for (String energyLine: energyLines){
+            parseEnergyDataLine(energyLine);
+        }
+
+    }
+
+
+        public void parseEnergyDataLine(String serialEnergyData){
+
+        if(serialEnergyData.isEmpty()){
+
+        }else if(serialEnergyData.contains("1-0:1.8.1")){
 
             String extractedData = getSubstring(serialEnergyData,"(", "*kWh)");
             lowDay = Double.parseDouble(extractedData);
@@ -82,7 +95,7 @@ public class EnergyDataParser {
 
         }else if(serialEnergyData.contains("1-0:1.7.0")) {
 
-            String extractedData = getSubstring(serialEnergyData,"(", "*kWh)");
+            String extractedData = getSubstring(serialEnergyData,"(", "*kW)");
             currentPower = Double.parseDouble(extractedData);
 
         }else if(serialEnergyData.contains("0-1:24.3.0")) {
