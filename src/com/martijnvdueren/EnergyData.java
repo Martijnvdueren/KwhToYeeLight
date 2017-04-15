@@ -47,7 +47,7 @@ package com.martijnvdueren;
 //                stack_teller = stack_teller +1
 
 
-public class EnergyDataParser {
+public class EnergyData {
 
     private double lowDay;
     private double highDay;
@@ -58,7 +58,7 @@ public class EnergyDataParser {
     private double gasUsage;
 
 
-    public void parseEnergyData(String serialEnergyData){
+    public EnergyData(String serialEnergyData){
 
         String energyLines[] = serialEnergyData.split(";");
 
@@ -103,7 +103,14 @@ public class EnergyDataParser {
             String extractedData = getSubstring(serialEnergyData,"(", ")");
             gasUsage =Double.parseDouble(extractedData);
 
+        }else if(serialEnergyData.contains("1-0:2.7.0")) {
+
+            String extractedData = getSubstring(serialEnergyData,"(", "*kW)");
+            currentReturnedPower =Double.parseDouble(extractedData);
+
         }
+
+
     }
 
     private static String getSubstring(String serialEnergyData, String start, String end) {
