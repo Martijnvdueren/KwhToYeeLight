@@ -1,4 +1,4 @@
-package com.martijnvdueren;
+package com.martijnvdueren.energy;
 
 /**
  * Created by marti on 15-4-2017.
@@ -15,8 +15,6 @@ public class EnergyDataConvertor {
 
         //calculate current usage percentage in relation to ceiling maxKw
         double percentage = (currentKw / maxKw);
-
-        System.out.println("percentage "+percentage);
 
         //8bit range of percentage, and reversed range
         int b8 = (int)(percentage*255);
@@ -37,7 +35,6 @@ public class EnergyDataConvertor {
 
             r = 255;
             g = 255-(b8-b8r);
-
         }
 
         //converting rgb values to 24gb24bit

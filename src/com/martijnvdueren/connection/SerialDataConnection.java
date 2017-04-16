@@ -1,4 +1,4 @@
-package com.martijnvdueren;
+package com.martijnvdueren.connection;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

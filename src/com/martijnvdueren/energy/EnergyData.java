@@ -1,4 +1,4 @@
-package com.martijnvdueren;
+package com.martijnvdueren.energy;
 
 //        /ISk5\2ME382-1004
 //
