@@ -25,8 +25,8 @@ public class SerialDataConnection {
             StringBuilder tempSb = new StringBuilder();
 
 
-            //Getting only one response at the moment since the program won't continue out of this loop.
-            //Have to read into and convert to threading afterwards.
+            //Todo: Getting only one response at the moment since the program won't continue out of this loop.
+            //Todo: Next step, get continuous data in 1 thread, process in another.
             while(runtimeCommand.isAlive() && (response = br.readLine()) != null){
 
                 tempSb.append(response+";");
@@ -37,6 +37,7 @@ public class SerialDataConnection {
                     isSerialDataSetReady = true;
                     tempSb.setLength(0);
 
+                    //destroy and close after 1 set of serial data received
                     runtimeCommand.destroy();
                     runtimeCommand.waitFor();
                     br.close();
@@ -48,6 +49,7 @@ public class SerialDataConnection {
         } catch (Exception e) {
             e.printStackTrace();
         }finally {
+            //destroy after connection close
 //            runtimeCommand.destroy();
 //            runtimeCommand.waitFor();
 //            System.out.println ("exit: " + runtimeCommand.exitValue());
