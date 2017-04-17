@@ -13,6 +13,7 @@ public class TCPConnection
 
     public TCPConnection(String host, int port){
         try{
+            System.out.println("open socket ");
             clientSocket = new Socket(host, port);
             outToServer = new DataOutputStream(clientSocket.getOutputStream());
             printWriterw = new PrintWriter(outToServer);
@@ -26,10 +27,9 @@ public class TCPConnection
 
     public void sendJsonCommand(String Json)
     {
-        printWriterw.println(Json);
-        printWriterw.flush();
-
         try {
+            printWriterw.println(Json);
+            printWriterw.flush();
             System.out.println("FROM SERVER: " + inFromServer.readLine());
         }catch (IOException io) {
             io.printStackTrace();

@@ -40,6 +40,8 @@ public class SerialDataConnection {
                     //destroy and close after 1 set of serial data received
                     runtimeCommand.destroy();
                     runtimeCommand.waitFor();
+                    System.out.println ("exit: " + runtimeCommand.exitValue());
+
                     br.close();
                 }
 
