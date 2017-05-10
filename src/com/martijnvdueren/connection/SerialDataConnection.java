@@ -43,10 +43,13 @@ public class SerialDataConnection {
                     System.out.println ("exit: " + runtimeCommand.exitValue());
 
                     br.close();
+
+                    System.out.println("runtime and br closed");
                 }
 
             }
 
+            System.out.println("exit while");
 
         } catch (Exception e) {
             e.printStackTrace();
