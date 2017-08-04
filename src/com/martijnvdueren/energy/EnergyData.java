@@ -65,7 +65,6 @@ public class EnergyData {
         for (String energyLine: energyLines){
             parseEnergyDataLine(energyLine);
         }
-
     }
 
 
@@ -107,7 +106,6 @@ public class EnergyData {
 
             String extractedData = getSubstring(serialEnergyData,"(", "*kW)");
             currentReturnedPower =Double.parseDouble(extractedData);
-
         }
 
 

@@ -14,7 +14,7 @@ public class EnergyDataConvertor {
         int b=0;
 
         //calculate current usage percentage in relation to ceiling maxKw
-        double percentage = (currentKw / maxKw);
+        double percentage = (maxKw>currentKw)? (currentKw / maxKw) : 1;
 
         //8bit range of percentage, and reversed range
         int b8 = (int)(percentage*255);
@@ -22,17 +22,14 @@ public class EnergyDataConvertor {
 
         //setting r,g values based on the range
         if(percentage < 0.5){
-
             r = 255-(b8r-b8);
             g = 255;
 
         }else if(percentage == 0.5){
-
             r = 255;
             g = 255;
 
         }else if(percentage > 0.5){
-
             r = 255;
             g = 255-(b8-b8r);
         }

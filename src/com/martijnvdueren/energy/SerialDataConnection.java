@@ -1,4 +1,4 @@
-package com.martijnvdueren.connection;
+package com.martijnvdueren.energy;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -26,7 +26,6 @@ public class SerialDataConnection {
 
 
             //Todo: Getting only one response at the moment since the program won't continue out of this loop.
-            //Todo: Next step, get continuous data in 1 thread, process in another.
             while(runtimeCommand.isAlive() && (response = br.readLine()) != null){
 
                 tempSb.append(response+";");
@@ -40,16 +39,13 @@ public class SerialDataConnection {
                     //destroy and close after 1 set of serial data received
                     runtimeCommand.destroy();
                     runtimeCommand.waitFor();
-                    System.out.println ("exit: " + runtimeCommand.exitValue());
 
                     br.close();
 
-                    System.out.println("runtime and br closed");
+                    //System.out.println("runtime and br closed");
                 }
 
             }
-
-            System.out.println("exit while");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -57,7 +53,7 @@ public class SerialDataConnection {
             //destroy after connection close
 //            runtimeCommand.destroy();
 //            runtimeCommand.waitFor();
-//            System.out.println ("exit: " + runtimeCommand.exitValue());
+            System.out.println ("exit: " + runtimeCommand.exitValue());
 
         }
     }

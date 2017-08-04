@@ -5,7 +5,7 @@ import java.io.IOException;
 /**
  * Created by marti on 10-5-2017.
  */
-public class CommandlineConnection {
+public class CommandlineConnection extends Connection{
 
     private String host;
     private int port;

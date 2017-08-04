@@ -5,26 +5,20 @@ package com.martijnvdueren.connection;
  */
 
 
-public class YeeLightConnection {
+public class YeeLightConnection<C extends Connection> {
 
-    private TCPConnection tcpConnection;
-    private CommandlineConnection commandlineConnection;
+    private C connection;
 
-    public YeeLightConnection(TCPConnection tcpConnection){
-        this.tcpConnection = tcpConnection;
-    }
-
-    public YeeLightConnection(CommandlineConnection commandlineConnection){
-        this.commandlineConnection = commandlineConnection;
+    public YeeLightConnection(C connection){
+        this.connection = connection;
     }
 
     public void setRgb24bitValue(int rgb24bitValue) {
-        //tcpConnection.sendJsonCommand("{\"id\":1,\"method\":\"set_rgb\",\"params\":[" + rgb24bitValue + ", \"smooth\", 500]}");
-        commandlineConnection.sendJsonCommand("{\"id\":1,\"method\":\"set_rgb\",\"params\":[" + rgb24bitValue + ", \"smooth\", 500]}");
+        connection.sendJsonCommand("{\"id\":1,\"method\":\"set_rgb\",\"params\":[" + rgb24bitValue + ", \"smooth\", 500]}\r\n");
     }
 
     public void closeConnection(){
-        //tcpConnection.closeConnection();
-        commandlineConnection.closeConnection();
+        connection.closeConnection();
     }
+
 }
